@@ -2,11 +2,8 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "tutoring_system";
+$db = "tutoring_system";
 
-$conn = mysqli_connect($host, $user, $pass, $dbname);
-
-if (!$conn) {
-    die("Database Connection Failed: " . mysqli_connect_error());
-}
+$conn = mysqli_connect($host,$user,$pass,$db);
+if (!$conn) die("Connection failed: " . mysqli_connect_error());
 ?>
