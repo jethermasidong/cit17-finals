@@ -9,7 +9,6 @@ $review_id = intval($_GET['id'] ?? 0);
 
 $error = "";
 
-// Fetch the review to edit
 $stmt = mysqli_prepare($conn, "SELECT booking_id, tutor_id, rating, comment FROM reviews WHERE review_id=? AND student_id=? LIMIT 1");
 mysqli_stmt_bind_param($stmt, "ii", $review_id, $student_id);
 mysqli_stmt_execute($stmt);
@@ -20,7 +19,6 @@ if(!mysqli_stmt_fetch($stmt)){
 }
 mysqli_stmt_close($stmt);
 
-// Handle form submission
 if($_SERVER['REQUEST_METHOD']==='POST'){
     $rating = $_POST['rating'];
     $comment = $_POST['comment'];

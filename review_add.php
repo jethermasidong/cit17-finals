@@ -7,10 +7,8 @@ if(!isset($_SESSION['user_id']) || $_SESSION['role']!=='student') header("Locati
 $student_id = $_SESSION['user_id'];
 $error = "";
 
-// Get booking_id from GET or POST
 $booking_id = intval($_GET['booking_id'] ?? $_POST['booking_id'] ?? 0);
 
-// Fetch booking info and tutor
 if($booking_id > 0){
     $stmt = mysqli_prepare($conn, "
         SELECT b.booking_id, s.tutor_id, t.name AS tutor_name
@@ -31,18 +29,15 @@ if($booking_id > 0){
     mysqli_stmt_close($stmt);
 }
 
-// Handle form submission
 if($_SERVER['REQUEST_METHOD']==='POST' && isset($_POST['rating'], $_POST['comment'])){
     $rating = intval($_POST['rating']);
     $comment = trim($_POST['comment']);
 
-    // Check if review already exists
     $check = mysqli_query($conn, "SELECT review_id FROM reviews WHERE booking_id=$booking_id AND student_id=$student_id");
     if(mysqli_num_rows($check) > 0){
         die("You have already reviewed this booking.");
     }
 
-    // Insert review
     $stmt = mysqli_prepare($conn, "
         INSERT INTO reviews (booking_id, student_id, tutor_id, rating, comment)
         VALUES (?,?,?,?,?)

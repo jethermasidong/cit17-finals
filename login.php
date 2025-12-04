@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($role === 'admin') header("Location: admin.php");
             elseif ($role === 'tutor') header("Location: teacher.php");
-            elseif ($role === 'student') header("Location: index.php");
+            elseif ($role === 'student') header("Location: index-student.php");
             exit();
         } else {
             $error = "Incorrect password.";
@@ -53,32 +53,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="min-h-screen flex items-center justify-center px-4 relative">
 
-<!-- BACKGROUND OVERLAY -->
 <div class="absolute inset-0 bg-black bg-opacity-40 backdrop-blur-sm"></div>
 
-<!-- LOGIN CARD -->
 <div class="w-full max-w-md bg-white/90 backdrop-blur-lg border border-gray-200 rounded-xl shadow-lg p-8 relative">
 
-    <!-- LOGO -->
     <div class="flex justify-center mb-4">
         <img src="logo.png" alt="Logo" class="w-32 h-32 object-cover rounded-full shadow-md border border-gray-300">
-        <!-- w-32 = 128px -->
     </div>
 
-    <!-- TITLE -->
     <h1 class="text-center text-2xl font-bold tracking-wide text-gray-800 mb-1">
         PRIMAL TUTORING SERVICES
     </h1>
     <p class="text-center text-gray-500 mb-6 text-sm">Login to continue</p>
 
-    <!-- ERROR -->
     <?php if($error): ?>
         <div class="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
             <?php echo $error; ?>
         </div>
     <?php endif; ?>
 
-    <!-- FORM -->
     <form method="POST" class="space-y-4">
 
         <div>
@@ -96,6 +89,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </button>
 
     </form>
+
+    <p class="mt-4 text-center text-gray-600 text-sm">
+        Don't have an account? 
+        <a href="register.php" class="text-green-600 font-medium hover:underline">Register here</a>
+    </p>
+
 </div>
 
 </body>

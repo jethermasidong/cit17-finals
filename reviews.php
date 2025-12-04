@@ -26,7 +26,7 @@ if($role === 'admin'){
         WHERE t.user_id = $uid
         ORDER BY r.created_at DESC
     ");
-} else { // student
+} else { 
     $res = mysqli_query($conn, "
         SELECT r.review_id, u.name AS student_name, t.name AS tutor_name,
                r.rating, r.comment, r.created_at
@@ -50,10 +50,8 @@ if($role === 'admin'){
 
 <div class="max-w-7xl mx-auto">
 
-    <!-- TITLE -->
     <h1 class="text-3xl font-bold mb-6 text-gray-800">Reviews</h1>
 
-    <!-- TABLE CONTAINER -->
     <div class="bg-white rounded-xl shadow-lg overflow-auto border border-gray-200">
 
         <table class="w-full text-base">
@@ -106,15 +104,7 @@ if($role === 'admin'){
 
     </div>
 
-    <!-- ACTION BUTTONS -->
-    <?php if($role==='student'): ?>
-        <a href="review_add.php" 
-           class="inline-block mt-6 px-5 py-2 bg-green-600 text-white rounded-lg shadow hover:bg-green-700 transition">
-           Add Review
-        </a>
-    <?php endif; ?>
-
-    <a href="<?php echo ($role==='admin')?'admin.php':(($role==='tutor')?'teacher.php':'index.php');?>" 
+    <a href="<?php echo ($role==='admin')?'admin.php':(($role==='tutor')?'teacher.php':'index-student.php');?>" 
        class="block mt-4 text-gray-600 hover:underline">
        ← Back
     </a>

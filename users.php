@@ -17,7 +17,6 @@ $res = mysqli_query($conn, "SELECT * FROM users ORDER BY created_at DESC");
 
 <div class="max-w-6xl mx-auto">
 
-    <!-- HEADER -->
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-4xl font-bold text-gray-900">Users</h1>
         <div>
@@ -26,7 +25,6 @@ $res = mysqli_query($conn, "SELECT * FROM users ORDER BY created_at DESC");
         </div>
     </div>
 
-    <!-- USERS TABLE -->
     <div class="bg-white rounded-2xl shadow overflow-auto">
         <table class="w-full text-base">
             <thead class="bg-gray-100 text-gray-700 uppercase text-left">

@@ -17,7 +17,6 @@ $res = mysqli_query($conn, "SELECT * FROM subjects ORDER BY subject_name ASC");
 
 <div class="max-w-6xl mx-auto">
 
-    <!-- HEADER -->
     <div class="flex justify-between items-center mb-8">
         <h1 class="text-4xl font-bold text-gray-900">Subjects</h1>
         <div>
@@ -26,7 +25,7 @@ $res = mysqli_query($conn, "SELECT * FROM subjects ORDER BY subject_name ASC");
         </div>
     </div>
 
-    <!-- SUBJECTS TABLE -->
+
     <div class="bg-white rounded-2xl shadow overflow-auto">
         <table class="w-full text-base">
             <thead class="bg-gray-100 text-gray-700 uppercase text-left">
