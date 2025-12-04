@@ -28,8 +28,9 @@ body { background-color: #f9f9f9; color: #000; }
 
 <nav class="bg-white shadow fixed w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="home-index.php" class="text-2xl font-bold text-black ml-0">Primal Tutoring Services</a>
-        <ul class="flex gap-6 items-center text-black">
+        <a href="home-index.php" class="text-xl md:text-2xl font-bold text-black">Primal Tutoring Services</a>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex gap-6 items-center text-black">
             <li><a href="home-index.php" class="hover:text-gray-700">Home</a></li>
             <li><a href="#services" class="hover:text-gray-700">Services</a></li>
             <?php if(isset($_SESSION['user_id'])): ?>
@@ -40,17 +41,37 @@ body { background-color: #f9f9f9; color: #000; }
                 <li><a href="register.php" class="hover:text-gray-700">Register</a></li>
             <?php endif; ?>
         </ul>
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-button" class="md:hidden text-black focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <ul class="flex flex-col gap-4 px-6 py-4 text-black">
+            <li><a href="home-index.php" class="hover:text-gray-700 block">Home</a></li>
+            <li><a href="#services" class="hover:text-gray-700 block">Services</a></li>
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <li><a href="login.php" class="hover:text-gray-700 block">Dashboard</a></li>
+                <li><a href="logout.php" class="hover:text-gray-700 block">Logout</a></li>
+            <?php else: ?>
+                <li><a href="login.php" class="hover:text-gray-700 block">Login</a></li>
+                <li><a href="register.php" class="hover:text-gray-700 block">Register</a></li>
+            <?php endif; ?>
+        </ul>
     </div>
 </nav>
 
 <section class="relative h-screen flex items-center justify-center">
     <img src="bg1.jpg" class="absolute inset-0 w-full h-full object-cover opacity-35">
-    <div class="relative bg-black bg-opacity-50 p-10 rounded-xl text-center text-white">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Your Wellness Journey Starts Here</h1>
-        <p class="text-lg md:text-xl mb-6">Learn, grow, and achieve with our expert tutors.</p>
-        <div class="flex justify-center gap-4">
-            <a href="#services" class="px-6 py-3 bg-white text-black rounded hover:bg-gray-200 transition">View Services</a>
-            <a href="login.php" class="px-6 py-3 border border-white rounded hover:bg-white hover:text-black transition">Book Now</a>
+    <div class="relative bg-black bg-opacity-50 p-6 md:p-10 rounded-xl text-center text-white max-w-4xl mx-4">
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">Your Wellness Journey Starts Here</h1>
+        <p class="text-base sm:text-lg md:text-xl mb-6">Learn, grow, and achieve with our expert tutors.</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="#services" class="px-6 py-3 bg-white text-black rounded hover:bg-gray-200 transition text-center">View Services</a>
+            <a href="login.php" class="px-6 py-3 border border-white rounded hover:bg-white hover:text-black transition text-center">Book Now</a>
         </div>
     </div>
 </section>
