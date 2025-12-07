@@ -67,6 +67,7 @@ FOR ADMIN ACCOUNT
 - Login (assigned by admin)
 - Manage schedules
 - View bookings
+- View Reviews
 
 ### For Admins
 - Manage users, subjects, schedules, bookings, reviews
