@@ -47,13 +47,13 @@ A web-based tutoring system built with PHP and MySQL, featuring user management,
    - For XAMPP, start Apache and MySQL services.
 
 5. **Access the Application**
-   - Open your browser and navigate to `http://localhost/your_project_folder/`
-   - Register as a new user or login with existing credentials.
-
+   - Open your browser and navigate to `http://localhost/cit17-finals/home-index.php` - this is the homepage of our project
+   - There is a Button for Register as a new user or login with existing credentials.
 ### Default Admin Account
-
-- Email: admin@example.com (create during setup)
-- Password: admin123 (set during registration)
+FOR ADMIN ACCOUNT
+- Email: admin@gmail.com (static account)
+- Password: admin123 (static/hardcoded account)
+*After you logged in, you can add admin account on user management also.
 
 ## Usage
 
@@ -74,11 +74,12 @@ A web-based tutoring system built with PHP and MySQL, featuring user management,
 
 ## File Structure
 
-- `home-index.php` - Homepage
+- `home-index.php` - Homepage 
 - `login.php` - Login page
 - `register.php` - Registration page
 - `admin.php` - Admin dashboard
 - `index-student.php` - Student dashboard
+- `teacher.php` - Teacher/Tutor dashboard
 - `config.php` - Database configuration
 - `db.sql` - Database schema
 - Various PHP files for CRUD operations

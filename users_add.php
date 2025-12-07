@@ -1,24 +1,44 @@
 <?php
 session_start();
 include "config.php";
-if (!isset($_SESSION['user_id']) || $_SESSION['role']!=='admin') header("Location: login.php");
+
+if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+    header("Location: login.php");
+    exit();
+}
 
 $error = "";
-if ($_SERVER['REQUEST_METHOD']==='POST') {
-    $name = trim($_POST['name']);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name  = trim($_POST['name']);
     $email = trim($_POST['email']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $role = $_POST['role'];
+    $role  = $_POST['role'];
+    $check = mysqli_prepare($conn, "SELECT user_id FROM users WHERE email=? LIMIT 1");
+    mysqli_stmt_bind_param($check, "s", $email);
+    mysqli_stmt_execute($check);
+    mysqli_stmt_store_result($check);
 
-    $stmt = mysqli_prepare($conn,"INSERT INTO users (name,email,password,role) VALUES (?,?,?,?)");
-    mysqli_stmt_bind_param($stmt,"ssss",$name,$email,$password,$role);
-    if (mysqli_stmt_execute($stmt)) {
-        header("Location: users.php");
-        exit();
-    } else $error="Error adding user.";
-    mysqli_stmt_close($stmt);
+    if (mysqli_stmt_num_rows($check) > 0) {
+        $error = "Email already exists. Please use a different email.";
+        mysqli_stmt_close($check);
+    } else {
+        mysqli_stmt_close($check);
+        $stmt = mysqli_prepare($conn, "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "ssss", $name, $email, $password, $role);
+
+        if (mysqli_stmt_execute($stmt)) {
+            header("Location: users.php");
+            exit();
+        } else {
+            $error = "Error adding user.";
+        }
+
+        mysqli_stmt_close($stmt);
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

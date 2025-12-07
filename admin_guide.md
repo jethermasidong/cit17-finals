@@ -7,14 +7,20 @@ This guide is for administrators managing the Primal Tutoring Services platform.
 ## Accessing Admin Dashboard
 
 1. Login with admin credentials
+      The static admin credentials are:
+      username: admin@gmail.com  
+      password: admin123
 2. You'll be redirected to `admin.php`
 3. Dashboard shows tiles for different management sections
 
+
 ## User Management
+1. In the user button, you can manage (create, edit, delete, view) the accounts (admin, tutor, student).
+* If you want to have another account for admin, you can utilized the user management for admin account creation.
 
 ### Viewing Users
 
-- Click "Users" tile
+- Click "Users" title
 - View table of all registered users
 - Columns: ID, Name, Email, Role, Created Date
 
@@ -70,6 +76,7 @@ This guide is for administrators managing the Primal Tutoring Services platform.
 - Shows tutor name, subject, day, time, status
 
 ### Adding Schedules
+* This is also for on-site tutors and students.
 
 1. Click "Add Schedule"
 2. Select Tutor
@@ -91,6 +98,11 @@ This guide is for administrators managing the Primal Tutoring Services platform.
 - Will cancel related bookings
 
 ## Booking Management
+
+## Add Bookings
+- This is for on-site booking.
+- If the student is a walk-in client the admin can add it
+in the users and manage booking by the admin.
 
 ### Viewing Bookings
 

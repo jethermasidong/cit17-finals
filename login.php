@@ -3,10 +3,24 @@ session_start();
 include "config.php";
 
 $error = "";
+
+$static_admin_email = "admin@gmail.com";
+$static_admin_password = "admin123"; 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
+    if ($email === $static_admin_email && $password === $static_admin_password) {
+        $_SESSION['user_id'] = 0; 
+        $_SESSION['name'] = "System Administrator";
+        $_SESSION['role'] = "admin";
+
+        header("Location: admin.php");
+        exit();
+    }
+
+    
     $stmt = mysqli_prepare($conn, "SELECT user_id, name, password, role FROM users WHERE email=? LIMIT 1");
     mysqli_stmt_bind_param($stmt, "s", $email);
     mysqli_stmt_execute($stmt);
