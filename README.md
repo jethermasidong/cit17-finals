@@ -1,6 +1,7 @@
 # Primal Tutoring Services
 
 A web-based tutoring system built with PHP and MySQL, featuring user management, scheduling, bookings, and reviews.
+It is built for online and onsite tutoring service.
 
 ## Features
 
