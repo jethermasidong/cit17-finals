@@ -1,6 +1,6 @@
 # USER MANUAL
 
-# Homepage
+## Homepage
 - This is where they can see the opening/welcoming site of the system.
 - There is a Button for Register as a new user or login with existing credentials.
 
